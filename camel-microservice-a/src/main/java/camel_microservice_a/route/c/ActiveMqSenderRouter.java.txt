@@ -1,0 +1,25 @@
+package camel_microservice_a.route.c;
+
+import org.apache.camel.builder.RouteBuilder;
+import org.springframework.stereotype.Component;
+
+@Component
+public class ActiveMqSenderRouter extends RouteBuilder {
+    @Override
+    public void configure() throws Exception {
+        /*// timer
+        from("timer:active-mq-timer?period=1000")
+        //  queue
+                .transform()
+                .constant("My Message For Active MQ")
+                .to("activemq:my-activemq-queue-2026")
+                .log("Message sent to ActiveMQ: ${body}");*/
+
+
+        // timer
+        from("file:files/json")
+                .log("Message sent to ActiveMQ FROM FILESSSS: ${body}")
+                .log("Body : ${body}")
+                .to("activemq:my-activemq-queue-2026");
+    }
+}
