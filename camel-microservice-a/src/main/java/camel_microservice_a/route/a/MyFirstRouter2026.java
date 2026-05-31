@@ -39,7 +39,7 @@ public class MyFirstRouter2026 extends RouteBuilder {
  * className,"methodName"
  */
 
-@Component
+//@Component
 class GetCurrentTimeBean {
 
     public String getCurrentTime2() {
@@ -47,7 +47,7 @@ class GetCurrentTimeBean {
     }
 }
 
-@Component
+//@Component
 class SimpleLoggingProcessorComponent {
     private static final Logger logger = LoggerFactory.getLogger(SimpleLoggingProcessorComponent.class);
     public void process(String message) {

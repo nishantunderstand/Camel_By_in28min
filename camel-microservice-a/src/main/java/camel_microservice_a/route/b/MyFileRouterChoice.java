@@ -3,7 +3,7 @@ package camel_microservice_a.route.b;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class MyFileRouterChoice extends RouteBuilder {
   @Override
   public void configure() throws Exception {
