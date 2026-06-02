@@ -4,6 +4,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
 import static org.apache.camel.LoggingLevel.ERROR;
+import static org.apache.camel.LoggingLevel.INFO;
 
 @Component
 public class HelloRoute extends RouteBuilder {
@@ -13,16 +14,19 @@ public class HelloRoute extends RouteBuilder {
       from("direct:greeting")
               .id("greeting")
               .log(ERROR, "Hello ${body}")
+
                 .choice()
+
                   .when()
                   .simple("${body} contains 'Team' ")
-                  .log(ERROR, "IF PERSON CODE :::: ")
+                  .log(INFO, "IF PERSON CODE :::: ")
                 .otherwise()
                   .log(ERROR, "ELSE PORTION CODE :::: ")
                   .end()
               .to("direct:finishing");
 
       from("direct:finishing")
-              .log(ERROR,"Bys ${body}");
+              .id("greeting-finish")
+              .log(ERROR,"Bye ${body}");
   }
 }
